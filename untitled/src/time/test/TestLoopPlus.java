@@ -10,7 +10,7 @@ public class TestLoopPlus {
         LocalDate ld = LocalDate.of(2024, 1, 1);
         for (int i = 1; i <= 5; i ++) {
             System.out.println("날짜 " + i + ": " + ld);
-            ld = ld.plus(2, ChronoUnit.WEEKS);
+            ld = ld.plusWeeks(2);
         }
     }
 }

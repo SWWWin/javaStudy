@@ -2,6 +2,8 @@ package time.test;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Scanner;
@@ -16,26 +18,26 @@ public class TestCalendarPrinter {
 
 
         System.out.println("Su  Mo  Tu  We  Th  Fr  Sa");
-        LocalDate ld = LocalDate.of(year, month, 1);
-        LocalDate last = ld.plusMonths(1);
-        int offsetWeekDays = ld.getDayOfWeek().getValue() % 7;
 
-        for(int i = 0; i < offsetWeekDays; i ++) {
-            System.out.println("    ");
+        LocalDate thisMonth = LocalDate.of(year, month, 1);
+        LocalDate nextMonth = thisMonth.plusMonths(1);
+
+        //0 = sunday, 1 = monday, ...
+        int da = thisMonth.getDayOfWeek().getValue() % 7;
+
+        LocalDate ld = thisMonth;
+
+        for(int i = 0; i < da; i ++) {
+            System.out.print("  ");
         }
 
-        LocalDate dayIterator = ld;
-        while (dayIterator.isBefore(last)) {
-            System.out.printf("%2d  ", dayIterator.getDayOfMonth());
-            if(dayIterator.getDayOfWeek() == DayOfWeek.SATURDAY) {
+
+        while(ld.isBefore(nextMonth)) {
+            System.out.printf("%2d  ", ld.getDayOfMonth());
+            if(ld.getDayOfWeek() == DayOfWeek.SATURDAY) {
                 System.out.println();
             }
-            dayIterator = dayIterator.plusDays(1);
+            ld = ld.plusDays(1);
         }
-
-
-
-
-
     }
 }

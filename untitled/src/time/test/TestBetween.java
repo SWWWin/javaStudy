@@ -17,7 +17,7 @@ public class TestBetween {
         long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
         System.out.println("시작 날짜: " + startDate);
         System.out.println("목표 날짜: " + endDate);
-        System.out.println("남은 기간: " + between.getYears() + "년 " + between.getMonths() + "개월 " + between.getDays() + "일");
+        System.out.println(between.getYears() + "년 " + between.getMonths() + "개월 " + between.getDays() + "일");
         System.out.println("디데이: " + daysBetween + "남음");
     }
 }
